@@ -1,0 +1,82 @@
+<html>
+<head>
+    <style>
+        body {
+    background-color: bisque;
+}
+
+.head {
+    width: 400px;
+    margin: 60px auto;
+    background-color: rgb(138, 38, 83);
+    padding: 20px;
+    border-radius: 6px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.hi {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.hi input {
+    flex: 1;
+    padding: 8px;
+}
+
+.hi button {
+    padding: 8px 15px;
+}
+
+.box{
+    padding: 0;
+}
+
+.box li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid white;
+}
+
+.a {
+    background: none;
+    border: none;
+    color: white;
+
+}
+    </style>
+</head>
+<body>
+<div class="head">
+    <h2>Todo Checklist App</h2>
+    <div class="hi">
+        <input type="text" placeholder="Enter a new task">
+        <button>Add</button>
+    </div>
+    <ul class="box">
+        <li>
+            <input type="checkbox" checked>
+            Learn HTML
+            <button class="a">Remove</button>
+        </li>
+        <li>
+            <input type="checkbox">
+            Learn CSS
+            <button class="a">Remove</button>
+        </li>
+        <li>
+            <input type="checkbox">
+            Learn JavaScript
+            <button class="a">Remove</button>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

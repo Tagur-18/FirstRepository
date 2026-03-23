@@ -1,0 +1,33 @@
+
+div{
+    width: 50%;
+    border-radius: 10px;
+    box-shadow: 10px 10px 0px 0px rgb(77, 74, 74);
+}
+input{
+    border-color: black;
+    box-shadow: 1px 1px 0px 1px rgb(65, 59, 59);
+    border-radius: 5px;
+}
+h4{
+    padding-top: 0px;
+    padding-left: 25px;
+    text-align: left;
+
+}
+body{
+    margin: 200px 550px;
+}
+button{
+    border-radius: 10px;
+    box-shadow: 1px 1px 0px 1px rgb(65, 59, 59);
+    width: 65%;
+    height: 25%;
+}
+u{
+    color: rgb(255, 0, 255);
+    
+}
+.hi{
+    margin: 0%;
+}

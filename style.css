@@ -1,0 +1,28 @@
+.form{    
+        margin-left:25px;
+        border:2px blue solid ;
+}
+#button{
+    background-color: navy;
+    margin-left: 8px;
+    color: aliceblue;
+}
+.rem{
+    background-color: red;
+    color: white;
+    margin-left: 60px;
+}
+.check{
+    
+    margin-right: 60px;
+}
+.block{
+    
+    margin:  200px 500px;
+    padding: 50px;
+    width: 20%;
+    border-radius: 20PX;
+}
+body{
+    height: 100vh;
+}

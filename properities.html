@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Flying Butterfly Name Reveal</title>
+
+<style>
+    body {
+        margin: 0;
+        overflow: hidden;
+        background: linear-gradient(to top, #87ceeb, #ffffff);
+        font-family: Arial, sans-serif;
+    }
+
+    /* Butterfly Container */
+    .butterfly {
+        position: absolute;
+        top: 50%;
+        left: -120px;
+        width: 100px;
+        height: 80px;
+        animation: fly 6s linear forwards;
+    }
+
+    /* Wings */
+    .wing {
+        width: 50px;
+        height: 70px;
+        background: radial-gradient(circle, pink, purple);
+        border-radius: 50%;
+        position: absolute;
+        animation: flap 0.3s infinite alternate;
+    }
+
+    .left {
+        left: 0;
+        transform-origin: right center;
+    }
+
+    .right {
+        right: 0;
+        transform-origin: left center;
+    }
+
+    /* Butterfly flying animation */
+    @keyframes fly {
+        0% {
+            left: -120px;
+            top: 60%;
+        }
+        25% {
+            top: 40%;
+        }
+        50% {
+            top: 55%;
+        }
+        75% {
+            top: 35%;
+        }
+        100% {
+            left: 110%;
+            top: 50%;
+        }
+    }
+
+    /* Wing flapping */
+    @keyframes flap {
+        from { transform: rotateY(0deg); }
+        to   { transform: rotateY(45deg); }
+    }
+
+    /* Name Reveal */
+    .name {
+        position: absolute;
+        top: 40%;
+        width: 100%;
+        text-align: center;
+        font-size: 60px;
+        font-weight: bold;
+        color: purple;
+        opacity: 0;
+        transform: scale(0.5);
+        animation: reveal 2s ease forwards;
+        animation-delay: 6s; /* appears after butterfly finishes */
+    }
+
+    @keyframes reveal {
+        from {
+            opacity: 0;
+            transform: scale(0.5);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+</style>
+</head>
+<body>
+
+<!-- Butterfly -->
+<div class="butterfly">
+    <div class="wing left"></div>
+    <div class="wing right"></div>
+</div>
+
+<!-- Name appears again -->
+<div class="name">AGAIN</div>
+
+</body>
+</html
