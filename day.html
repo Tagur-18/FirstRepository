@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Day Habits</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #fff; padding: 20px; }
+    h1 { text-align: center; }
+    .habit { margin: 15px 0; }
+    label { font-weight: bold; }
+    button { margin-top: 15px; padding: 10px 15px; }
+    .score { margin-top: 20px; font-size: 18px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1 id="dayTitle"></h1>
+
+  <div class="habit">
+    <label><input type="checkbox" id="exercise"> Exercise</label>
+  </div>
+  <div class="habit">
+    <label><input type="checkbox" id="food"> Food Rotation</label>
+  </div>
+  <div class="habit">
+    <label><input type="checkbox" id="diet"> Diet Maintenance</label>
+  </div>
+  <div class="habit">
+    <label><input type="checkbox" id="activities"> Activities</label>
+  </div>
+
+  <button onclick="saveHabits()">Save & Evaluate</button>
+  <button onclick="skipDay()">Skip Day</button>
+  <button onclick="goBack()">Back to Heatmap</button>
+
+  <div class="score" id="score"></div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const day = params.get('day');
+    document.getElementById('dayTitle').textContent = `Day ${day} Evaluation`;
+
+    // Load saved data
+    const saved = JSON.parse(localStorage.getItem(`day${day}`)) || {};
+    document.getElementById('exercise').checked = saved.exercise || false;
+    document.getElementById('food').checked = saved.food || false;
+    document.getElementById('diet').checked = saved.diet || false;
+    document.getElementById('activities').checked = saved.activities || false;
+
+    function saveHabits() {
+      const data = {
+        exercise: document.getElementById('exercise').checked,
+        food: document.getElementById('food').checked,
+        diet: document.getElementById('diet').checked,
+        activities: document.getElementById('activities').checked
+      };
+      localStorage.setItem(`day${day}`, JSON.stringify(data));
+
+      // Calculate score
+      let score = 0;
+      for (let key in data) {
+        if (data[key]) score++;
+      }
+      document.getElementById('score').textContent = `Your score: ${score}/4 habits completed`;
+      alert("Habits saved for Day " + day);
+    }
+
+    function skipDay() {
+      const data = {
+        exercise: false,
+        food: false,
+        diet: false,
+        activities: false
+      };
+      localStorage.setItem(`day${day}`, JSON.stringify(data));
+      document.getElementById('score').textContent = "You skipped this day.";
+      alert("Day " + day + " marked as skipped");
+    }
+
+    function goBack() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Food Habit Heatmap</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f5f5f5; padding: 20px; }
+    h1 { text-align: center; }
+    .heatmap {
+      display: grid;
+      grid-template-columns: repeat(30, 25px);
+      grid-gap: 5px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .day {
+      width: 25px; height: 25px;
+      background: #ebedf0; /* default gray */
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .day.completed { background: #7bc96f; } /* dark green */
+    .day.skipped { background: lightgreen; } /* light green for skipped */
+  </style>
+</head>
+<body>
+  <h1>30-Day Food Habit Heatmap</h1>
+  <p style="text-align:center;">Click a day to evaluate your habits</p>
+  
+  <div class="heatmap" id="heatmap"></div>
+
+  <script>
+    const heatmap = document.getElementById('heatmap');
+
+    for (let i = 1; i <= 30; i++) {
+      const day = document.createElement('div');
+      day.className = 'day';
+      day.dataset.day = i;
+      day.title = `Day ${i}`;
+      heatmap.appendChild(day);
+
+      // Check saved status
+      const saved = localStorage.getItem(`day${i}`);
+      if(saved) {
+        const data = JSON.parse(saved);
+        const habits = Object.values(data);
+        if(habits.includes(true)) {
+          day.classList.add('completed'); // at least one habit done
+        } else {
+          day.classList.add('skipped');   // saved but nothing done
+        }
+      }
+
+      day.addEventListener('click', () => {
+        window.location.href = `day.html?day=${i}`;
+      });
+    }
+  </script>
+</body>
+</html>
